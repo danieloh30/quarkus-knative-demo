@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ## Istio
+curl -s https://raw.githubusercontent.com/knative/docs/master/docs/install/scripts/istio-openshift-policies.sh | bash
+
 kubectl apply --filename https://github.com/knative/serving/releases/download/v0.5.1/istio-crds.yaml && \
 kubectl apply --filename https://github.com/knative/serving/releases/download/v0.5.1/istio.yaml
 
