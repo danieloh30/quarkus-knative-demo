@@ -1,4 +1,4 @@
-package com.redhat.rhsummit.quickstart;
+package com.redhat.serverless.quickstart;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,6 +11,6 @@ public class GreetingResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "hello";
+        return "hello;
     }
 }

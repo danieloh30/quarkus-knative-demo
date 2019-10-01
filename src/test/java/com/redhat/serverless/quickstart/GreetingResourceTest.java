@@ -1,4 +1,4 @@
-package com.redhat.rhsummit.quickstart;
+package com.redhat.serverless.quickstart;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
