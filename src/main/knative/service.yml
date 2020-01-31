@@ -10,4 +10,6 @@ spec:
         sidecar.istio.io/inject: "false"
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/user0-cloudnativeapps/serverless:latest
+      - image: quay.io/danieloh30/quarkus-serverless:1.2.0
+
+

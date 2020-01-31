@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.redhat.coolstore</groupId>
+  <groupId>com.redhat.serverless</groupId>
   <artifactId>quarkus-serverless</artifactId>
   <version>1.0-SNAPSHOT</version>
-
   <properties>
-    <quarkus.version>1.1.1.Final</quarkus.version>
+    <azure.functions.maven.plugin.version>1.3.2</azure.functions.maven.plugin.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
-    <surefire-plugin.version>2.22.1</surefire-plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <function>quarkus</function>
+    <functionAppName>quarkus-serverless-20200131020355767</functionAppName>
+    <functionAppRegion>westus</functionAppRegion>
+    <functionResourceGroup>java-functions-group</functionResourceGroup>
+    <maven.compiler.parameters>true</maven.compiler.parameters>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.parameters>true</maven.compiler.parameters>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <quarkus.version>1.2.0.Final</quarkus.version>
+    <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
+    <surefire-plugin.version>2.22.1</surefire-plugin.version>
   </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -76,7 +80,6 @@
       </plugin>
     </plugins>
   </build>
-
   <profiles>
     <profile>
       <id>native</id>
@@ -113,7 +116,7 @@
                 </goals>
                 <configuration>
                   <systemProperties>
-                      <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                    <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                   </systemProperties>
                 </configuration>
               </execution>
