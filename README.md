@@ -12,6 +12,6 @@ This is the source codes for the Quarkus with Serverless Demo.
 
 #### Guides to install OpenShift Serverless operator
 
- * [INSTALLING OPENSHIFT SERVERLESS](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html/serverless_applications/installing-openshift-serverless)
+ * [Installing OpenShift Serverless](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html/serverless_applications/installing-openshift-serverless)
 
  * [Knative Tutorial](https://redhat-developer-demos.github.io/knative-tutorial/knative-tutorial-basics/0.7.x/01-setup.html)
