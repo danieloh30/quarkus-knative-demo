@@ -1,16 +1,16 @@
 
 Quarkus Brings Serverless to Java Developers Demo
 
----
+----
 
 This is the source codes for the Quarkus with Serverless Demo.
 
-####The pre-pushed container image based on Quakrus native binary is here:
+#### The pre-pushed container image based on Quakrus native binary is here:
 
  * quay.io/repository/danieloh30/quarkus-serverless:1.2.0
  * danielon30/quarkus-serverless:1.2.0
 
-####Guides to install OpenShift Serverless operator
+#### Guides to install OpenShift Serverless operator
 
  * [INSTALLING OPENSHIFT SERVERLESS](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html/serverless_applications/installing-openshift-serverless)
 
