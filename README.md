@@ -1,9 +1,9 @@
 
 ## Quarkus Brings Serverless to Java Developers Demo
 
-----
-
 This is the source codes for the Quarkus with Serverless Demo.
+
+---
 
 #### The pre-pushed container image based on Quakrus native binary is here:
 
