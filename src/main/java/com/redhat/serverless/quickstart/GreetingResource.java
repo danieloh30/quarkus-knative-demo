@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/api/hello")
+@Path("/api/quarkus")
 public class GreetingResource {
 
     @GET

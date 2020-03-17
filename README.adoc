@@ -1,0 +1,156 @@
+
+## Quarkus Brings Serverless to Java Developers Demo
+
+This is the source codes for the Quarkus with Serverless Demo.
+
+---
+
+=== 1. Run a RESTful API application via Quarkus Development Mode
+
+Copy and paste the following commands in _Terminal_:
+
+[source,sh,role="copypaste"]
+----
+mvn compile quarkus:dev
+----
+
+You will see that *Quarkus* is ruuning as below:
+
+[source,sh]
+----
+2020-03-17 12:48:42,910 INFO  [io.quarkus] (main) quarkus-serverless 1.0-SNAPSHOT (running on Quarkus 1.2.1.Final) started in 1.675s. Listening on: http://0.0.0.0:8080
+2020-03-17 12:48:42,938 INFO  [io.quarkus] (main) Profile dev activated. Live Coding activated.
+2020-03-17 12:48:42,938 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy]
+----
+
+Access the endpoint via web browser or curl command:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/quarkus
+----
+
+Then you will see:
+
+[source,sh]
+----
+hello
+----
+
+=== 2. Live Coding
+
+Change the _return code_:
+
+[source,sh,role="java"]
+----
+return "Welcome, Quarkus with Serverless!";
+----
+
+Then reload the web page or run the curl command again:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/quarkus
+----
+
+Then you will see:
+
+[source,sh]
+----
+Welcome, Quarkus with Serverless!
+----
+
+*Awesome!* Quarkus did rebuid, repackage and redeploy the application for *YOU*.
+
+Stop the running Quarkus runtime in your local.
+
+=== 3. Package the application
+
+Package the application via *Uber Jar*:
+
+[source,sh,role="copypaste"]
+----
+mvn clean package -DskipTests
+----
+
+Run the application to make sure if it works properly:
+
+[source,sh,role="copypaste"]
+----
+java -jar target/quarkus-serverless-1.0-SNAPSHOT-runner.jar
+----
+
+You will see the same result when you access the endpoint URL.
+
+Package the application via *Naitve Compilation*:
+
+[source,sh,role="copypaste"]
+----
+mvn clean package -DskipTests -Pnative
+----
+
+Run the executable file:
+
+[source,sh,role="copypaste"]
+----
+java -jar target/quarkus-serverless-1.0-SNAPSHOT-runner.jar
+----
+
+*Fantastic!* It only takes `0.594s` to start up and this is the reason why you're saying that Quarks fits in serverless application.
+
+[NOTE]
+====
+If you need to deploy the native executable binary to Kubernetes cluster(i.e. OpenShift), you need to uncomment the following configuration in application.properties:
+
+quarkus.native.container-runtime=docker
+====
+
+=== 4. Deploy the App via Knative Service
+
+Log in OpenShift cluster 4.3+ then select *Deploy Image* in Dev Console. 
+
+Copy the following container image that pre-pushed based Quakrus native executable binary:
+
+[source,sh,role="copypaste"]
+----
+danielon30/quarkus-serverless:latest
+----
+
+You wil see that Quarkus application is up in 60 secs. When you go to the logs in Pod, you will see 10~15 millisecs to start Quarkus.
+
+=== 5. Deplooy the app to Azure Function
+
+Let's go back to your IDE and open _pom.xml_ to uncomment the following dependency:
+
+[source,xml,role="copypaste"]
+----
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-azure-functions-http</artifactId>
+      <version>${quarkus.version}</version>
+    </dependency>
+----
+
+Make sure to login Azure Cloud with your own credential:
+
+[source,sh,role="copypaste"]
+----
+az login
+----
+
+Rebuild and deploy it to Azure Cloud:
+
+[source,sh,role="copypaste"]
+----
+mvn clean install -DskipTests azure-functions:deploy
+----
+
+Once you login Azure Portal then you will see _quarkus_function_ in _Function App_ on the left menu.
+
+#### Appendix
+
+ * https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html/serverless_applications/installing-openshift-serverless[Installing OpenShift Serverless^]
+
+ * https://redhat-developer-demos.github.io/knative-tutorial/knative-tutorial-basics/0.7.x/01-setup.html[Knative Tutorial^]
+
+ * https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwips9jdgqLoAhUWboYKHdQDBVcYABAAGgJ2dQ&ohost=www.google.com&cid=CAASE-RoXTCYAjxYr3UCpAjH4kcK2tE&sig=AOD64_3KrMvXHFM0OR_h8zbwx3D1BupiGQ&q=&ved=2ahUKEwjl99DdgqLoAhXxkHIEHc21AN0Q0Qx6BAgOEAE&adurl=[Get Your Free Account‎ of Azure Cloud^]
