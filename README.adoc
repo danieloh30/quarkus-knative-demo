@@ -82,7 +82,7 @@ java -jar target/quarkus-serverless-1.0-SNAPSHOT-runner.jar
 
 You will see the same result when you access the endpoint URL.
 
-Package the application via *Naitve Compilation*:
+Package the application via *Native Compilation*:
 
 [source,sh,role="copypaste"]
 ----
